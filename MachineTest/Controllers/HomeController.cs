@@ -1,6 +1,8 @@
 using MachineTest.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MachineTest.Controllers
 {
@@ -22,11 +24,35 @@ namespace MachineTest.Controllers
                 new Items { ItemName = "Shoes", ItemPrice = 6000, Quantity = 4 },
                 new Items { ItemName = "Cap", ItemPrice = 2000, Quantity = 20 }
             };
-
             var total = 0;
+            string cuponcode = String.Empty;
+            int jeans = 0;
+           
+            foreach(var item in cartItems)
+            {
+                total = total + (int)item.ItemPrice;
+                if (cuponcode == "CDPCAP")
+                {
+                        if (item.ItemName == "Jeans")
+                        {
+                            jeans = item.Quantity / 2;
+                        }
+                        if (item.ItemName == "Cap")
+                        {
+                            item.Quantity = item.Quantity + jeans;
+                        }
+                }
+            }
+            if (cuponcode == "CDPA10")
+            {
 
+                total = total * (int)0.1;
+            }
+            
             ViewData["CartItems"] = cartItems;
             ViewData["Total"] = total;
+          
+
 
             return View();
         }
