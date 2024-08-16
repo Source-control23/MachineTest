@@ -33,11 +33,37 @@
                 </tr>
                 <tr>
                     <th>Cupon Code</th>
-                    <th><input type="text" placeholder="cupon code" /></th>
-                    <th><button>apply cupon</button></th>
+                    <th><input type="text" id="cupon" name="cupon" placeholder="cupon code" /></th>
+                    <th><button name="btn_cupon" id="btn_cupon">apply cupon</button></th>
                 </tr>
             </tbody>
 
         </table>
     </div>
 </div>
+<script>
+    $('#btn_cupon').click(function () {
+
+        @{
+            var cart = ViewData["CartItems"] as List<Items>;
+            }
+
+           
+      var cupon = $('#cupon').val();
+        if (cupon == 'CDP10') {
+            @{
+                total = (total/10);}
+            }
+        if (cupon == 'CDPCAP') {
+            if (cart[1].Quantity > 0) {
+                while (cart[1].Quantity > 1) {
+                    cart[3].Quantity = cart[3].Quantity - 1;
+                    @{
+                        total = total - 2000;
+                    }
+                 }
+            }
+        }
+    });
+</script>
+
