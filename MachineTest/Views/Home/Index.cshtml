@@ -15,8 +15,6 @@
                     <th>Item</th>
                     <th>Qty</th>
                     <th>Price/Item</th>
-                    <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,16 +24,17 @@
                         <td>@item.ItemName</td>
                         <td>@item.Quantity</td>
                         <td>@item.ItemPrice</td>
-                        <td></td>
-                        <td></td>
                     </tr>
                 }
                 <tr>
-                    <td>Total</td>
-                    <td></td>
-                    <td><input readonly value="@total" /></td>
-                    <td><input type="text" placeholder="cupon code" /></td>
-                    <td><button>Calculate bill</button></td>
+                    <th>Total</th>
+                    <th></td>
+                    <th>@total</th>
+                </tr>
+                <tr>
+                    <th>Cupon Code</th>
+                    <th><input type="text" placeholder="cupon code" /></th>
+                    <th><button>apply cupon</button></th>
                 </tr>
             </tbody>
 
