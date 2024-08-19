@@ -23,10 +23,56 @@ namespace MachineTest.Controllers
                 new Items { ItemName = "Cap", ItemPrice = 2000, Quantity = 20 }
             };
 
-            var total = 0;
+            //var total = 0;
+            var total = cartItems.Sum(item => item.ItemPrice * item.Quantity);
+
+            // Pass the cart items and total to the view
+            ViewData["CartItems"] = cartItems;
+            ViewData["Total"] = total;
+
 
             ViewData["CartItems"] = cartItems;
             ViewData["Total"] = total;
+
+            string coup = "CDP10";
+            string secCou = "CDPCAP";
+
+            var discount = total;
+            var calculateDiscount = Convert.ToInt32(discount / 100);
+
+            var myDic = calculateDiscount;
+
+
+            // With Discount 
+            if (cpon == coup)
+            {
+                myDic
+
+
+            }
+
+            else if (cpon == secCou)
+            {
+                // second code chek two item 
+
+
+            }
+            else
+            {
+                // Without Any Discount Here
+                
+            }
+
+
+            //if (!string.IsNullOrEmpty(this.cp.Text.ToString()))
+            //{
+            //    actualPrice = Convert.ToDecimal(this.numericTextBox3.Text);
+            //}
+
+            //else
+            //{
+            //    numericTextBox3.Text = "";
+            //}
 
             return View();
         }
