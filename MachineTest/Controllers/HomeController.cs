@@ -23,7 +23,7 @@ namespace MachineTest.Controllers
                 new Items { ItemName = "Cap", ItemPrice = 2000, Quantity = 20 }
             };
 
-            var total = 0;
+            var total = cartItems.Sum(Items=>Items.Quantity * Items.ItemPrice) ;
 
             ViewData["CartItems"] = cartItems;
             ViewData["Total"] = total;
@@ -42,19 +42,19 @@ namespace MachineTest.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult ApplyCoupon(String couponID)
-        {
-             var cart = GetShoppingCart();
+        //public IActionResult applycoupon(string couponid)
+        //{
+        //    var cart = getshoppingcart();
 
-            if (!string.IsNullOrEmpty(couponID))
-            {
-                ApplyCoupon(cart, couponID);
-            }
-            var Totalbill = Cal
+        //    if (!string.isnullorempty(couponid))
+        //    {
+        //        applycoupon(cart, couponid);
+        //    }
+        //    var totalbill = cal
 
-            return View(cart);
-        }
+        //    return view(cart);
+        //}
 
-        
+
     }
 }
