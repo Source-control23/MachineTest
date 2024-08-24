@@ -26,7 +26,33 @@ namespace MachineTest.Controllers
             var total = 0;
 
             ViewData["CartItems"] = cartItems;
-            ViewData["Total"] = total;
+                    float totalprice = 0;
+            float totalamount =0;
+            float discount =10;
+          foreach (var item in cartItems)
+               
+
+
+            {
+                if (item.ItemName == "Jeans") {
+                   float  price = item.ItemPrice / item.Quantity;
+
+                    item.Quantity = item.Quantity / 2;
+
+                    item.ItemPrice = price * item.Quantity;
+                    
+
+
+                 }
+                totalprice = totalprice + item.ItemPrice;
+                totalamount = totalamount +(item.ItemPrice * discount / 100);
+               // totalprice  = totalamount
+
+;
+
+            }
+          totalprice = totalprice -totalamount;
+            ViewData["Total"] = totalprice;
 
             return View();
         }
