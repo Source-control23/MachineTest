@@ -22,13 +22,19 @@ namespace MachineTest.Controllers
                 new Items { ItemName = "Shoes", ItemPrice = 6000, Quantity = 4 },
                 new Items { ItemName = "Cap", ItemPrice = 2000, Quantity = 20 }
             };
+            foreach (var item in cartItems)
+            {
+                var total=
+            }
 
-            var total = 0;
+            var total = cartItems[Items].ItemPrice;
 
             ViewData["CartItems"] = cartItems;
             ViewData["Total"] = total;
 
-            return View();
+            var discount = total * 0.1;
+
+                return View();
         }
 
         public IActionResult Privacy()
