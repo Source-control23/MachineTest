@@ -48,7 +48,7 @@ namespace MachineTest.Controllers
                 totalamount = totalamount +(item.ItemPrice * discount / 100);
                // totalprice  = totalamount
 
-;
+
 
             }
           totalprice = totalprice -totalamount;
