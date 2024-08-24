@@ -1,5 +1,6 @@
 using MachineTest.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Diagnostics;
 
 namespace MachineTest.Controllers
@@ -23,7 +24,47 @@ namespace MachineTest.Controllers
                 new Items { ItemName = "Cap", ItemPrice = 2000, Quantity = 20 }
             };
 
-            var total = 0;
+            decimal resultTotalAmount = 0;
+            string coupancode = "CDPCAP";
+            if (coupancode == "CDPCAP")
+            {
+                if (cartItems.Count > 0)
+                {
+                    foreach (var item in cartItems)
+                    {
+                        if (item.ItemName == "Jeans" && item.Quantity == 2)
+                        {
+                            Console.WriteLine("One cap is free");
+                        }
+                       
+                    }
+                }
+            }
+            string coupancode2 = "CDP10";
+            if (coupancode2 == "CDP10")
+            {
+                decimal markdown;
+                decimal discountedPrice;
+                foreach (var item in cartItems)
+                {
+                    //  10% of discount 
+                    markdown = Math.Round(item.ItemPrice * (10 / 100m), 2, MidpointRounding.ToEven);
+                    // discount amout 
+                    discountedPrice = item.ItemPrice - markdown;
+                    resultTotalAmount += discountedPrice;
+
+                }
+            }
+           
+                    //var calculateDiscount = Convert.ToInt32(item.ItemPrice / 100);
+
+            
+
+            
+
+            /*return discountedPrice*/;
+
+            var total = resultTotalAmount;
 
             ViewData["CartItems"] = cartItems;
             ViewData["Total"] = total;
