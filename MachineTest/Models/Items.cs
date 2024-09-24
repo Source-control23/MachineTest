@@ -4,6 +4,8 @@
     {
         public int Quantity { get; set; }
         public string ItemName { get; set; }
-        public float ItemPrice { get; set; }
+        public decimal ItemPrice { get; set; }
+
+        public bool isJeans { get; set; }
     }
 }
